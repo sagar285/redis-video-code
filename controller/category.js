@@ -94,12 +94,13 @@ exports.getHashInRedis = async (req, res) => {
 }
 
 // bit in redis
-exports.bitInRedis = async (req, res) => {
-    try {
-        await client.setBit("bitArray", 1, 1);
-        res.status(200).json({message: "Bit in redis done successfully"});
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }   
+exports.userclick =async(req,res)=>{
+    await client.setBit('product:views:1', 1001, 1);
+    res.status(200).json({ message: 'User clicked successfully' });
+}
+
+exports.isUserViewed = async(req,res)=>{
+    const result = await client.getBit('product:views:1', 1001);
+    res.status(200).json({ result });
 }
 
