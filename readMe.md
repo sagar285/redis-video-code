@@ -1,0 +1,1 @@
+this is a simple project to learn redis and its various features.
